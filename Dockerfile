@@ -34,4 +34,4 @@ RUN git clone https://github.com/Leoprvn/DataQuest
 ENV JAVA_HOME="/usr/lib/jvm/java-1.8-openjdk"
 
 #### 7. Working Directory 
-WORKDIR DataQuest
+WORKDIR DataQuest/scripts
