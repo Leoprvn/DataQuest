@@ -22,8 +22,8 @@ if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
 if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi && \
 rm -r /root/.cache
 
-### 4. Get pyspark & set up the pyspark with compression native lib
-RUN pip install pyspark \
+### 4. Get pyspark, pytest & set up the pyspark with compression native lib
+RUN pip install pyspark pytest \
 && cd /lib/ \
 && ln -s ld-musl-x86_64.so.1 ld-linux-x86-64.so.2
 
