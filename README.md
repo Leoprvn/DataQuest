@@ -3,7 +3,10 @@
 The Dockerised solution with Python scripts to convert flat file to delimiter file & Anonymize data as per the requirment
 
 Docker File to create the docker image with python and pyspark setup to run the scripts with the Linux version 'alpine:latest' (Light weight Docker image of linux OS).
-Execute to get into the docker: docker run -it praveenko/pyspark_data_quest:latest
+Execute to get into the docker: 
+
+docker pull praveenko/pyspark_data_quest
+docker run -it praveenko/pyspark_data_quest:latest
 
 Problem 1: Parse fixed width file
 Generate a fixed width file using the provided spec (offset provided in the spec file represent the length of each field).
@@ -27,12 +30,12 @@ The script 'tokensier.py' which Anonymizes the first_name, last_name and address
 execute: python tokeniser.py "../io/csv_file.csv" "../io/tokenised_data"
 
 All Commands:
+docker pull praveenko/pyspark_data_quest
 docker run -it praveenko/pyspark_data_quest
 python create_flat_file.py "../io/flat_file.txt" 100 "5,12,3,2,13,7,10,13,20,13"
 python parse_write.py "../io/flat_file.txt" "../io/delimited_file.dat" "5,12,3,2,13,7,10,13,20,13"
 python create_csv.py "../io/csv_file.csv" 100
 python tokeniser.py "../io/csv_file.csv" "../io/tokenised_data"
-
 
 Run the spark submit command from the spark cluster. NB: Docker doesn't have spark cluster ,but can run as local from docker
 spark-submit  --master local --deploy-mode client tokeniser.py "../io/csv_file.csv" "../io/tokenised_data"
