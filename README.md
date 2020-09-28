@@ -5,7 +5,6 @@ The Dockerised solution with Python scripts to convert flat file to delimiter fi
 Docker File to create the docker image with python and pyspark setup to run the scripts with the Linux version 'alpine:latest' (Light weight Docker image of linux OS).
 Execute to get into the docker: docker run -it praveenko/pyspark_data_quest:latest
 
-
 Problem 1: Parse fixed width file
 Generate a fixed width file using the provided spec (offset provided in the spec file represent the length of each field).
 Implement a parser that can parse the fixed width file and generate a delimited file, like CSV for example.
@@ -26,6 +25,18 @@ The script 'create_csv.py' which generates csv file with the first_name,last_nam
 execute: python create_csv.py "../io/csv_file.csv" 100
 The script 'tokensier.py' which Anonymizes the first_name, last_name and address
 execute: python tokeniser.py "../io/csv_file.csv" "../io/tokenised_data"
+
+All Commands:
+docker run -it praveenko/pyspark_data_quest
+python create_flat_file.py "../io/flat_file.txt" 100 "5,12,3,2,13,7,10,13,20,13"
+python parse_write.py "../io/flat_file.txt" "../io/delimited_file.dat" "5,12,3,2,13,7,10,13,20,13"
+python create_csv.py "../io/csv_file.csv" 100
+python tokeniser.py "../io/csv_file.csv" "../io/tokenised_data"
+
+
+Run the spark submit command from the spark cluster. NB: Docker doesn't have spark cluster ,but can run as local from docker
+spark-submit  --master local --deploy-mode client tokeniser.py "../io/csv_file.csv" "../io/tokenised_data"
+
 
 Testing:
 For all the module, testing scenario has been addressed with pytest python package and placed in the test folder. Exceute 'pytest' from the test folder and it picks up all the scripts name starts with test name . Test module tests all the function which used in scripts.
