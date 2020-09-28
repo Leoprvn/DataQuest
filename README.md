@@ -10,9 +10,9 @@ Implement a parser that can parse the fixed width file and generate a delimited 
 
 Solution:
 The script 'create_flat_file.py' which creates the random generated alphanumberic value with fixed length file.
-execute: python create_flat_file.py "create_flat.txt" 100 "5,12,3,2,13,7,10,13,20,13"
+execute: python create_flat_file.py "flat_file.txt" 100 "5,12,3,2,13,7,10,13,20,13"
 The script 'parse_write.py' which parses the flat file as input and convert into the dat file with comma seperator delimiter(",").
-execute: python parse_write.py "./io/create_flat.txt" "./io/delimited_file.dat" "5,12,3,2,13,7,10,13,20,13"
+execute: python parse_write.py "./io/flat_file.txt" "./io/delimited_file.dat" "5,12,3,2,13,7,10,13,20,13"
 
 Problem 2: Data processing
 Generate a csv file containing first_name, last_name, address, date_of_birth
@@ -21,9 +21,9 @@ Columns to anonymise are first_name, last_name and address
 
 Solution:
 The script 'create_csv.py' which generates csv file with the first_name,last_name,address and date_of_birth of random names from the list defined int the script with clean text/
-execute: python create_csv.py "./io/create_csv.csv" 100
+execute: python create_csv.py "./io/csv_file.csv" 100
 The script 'tokensier.py' which Anonymizes the first_name, last_name and address
-execute: python "./io/create_csv.csv" "./io/tokenised_data"
+execute: python "./io/csv_file.csv" "./io/tokenised_data"
 
 Testing:
 For all the module, testing scenario has been addressed with pytest python package and placed in the test folder. Exceute 'pytest' from the test folder and it picks up all the scripts name starts with test name . Test module tests all the function which used in scripts.
