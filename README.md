@@ -11,7 +11,7 @@ Implement a parser that can parse the fixed width file and generate a delimited 
 Solution:
 The script 'create_flat_file.py' which creates the random generated alphanumberic value with fixed length file.
 execute: python create_flat_file.py "flat_file.txt" 100 "5,12,3,2,13,7,10,13,20,13"
-The script 'parse_write.py' which parses the flat file as input and convert into the dat file with comma seperator delimiter(",").
+The script 'parse_write.py' which parses the flat file as input and convert into the dat file with comma seperator delimiter(",") along with header.
 execute: python parse_write.py "./io/flat_file.txt" "./io/delimited_file.dat" "5,12,3,2,13,7,10,13,20,13"
 
 Problem 2: Data processing
