@@ -22,8 +22,8 @@ def spark_init(appname_val):
     :return: returns the spark session
     """
     try:
-        spark = SparkSession.builder.appName('appname_val').getOrCreate()
-        spark.sparkContext.setLogLevel("ERROR")
+        spark = SparkSession.builder.appName(appname_val).getOrCreate()
+        spark.sparkContext.setLogLevel("WARN")
         return spark
     except:
         print("Initialisation of spark session failed")
@@ -90,16 +90,16 @@ def main():
     folder_name = sys.argv[2]
     try:
         spark = spark_init(appname_val)
-        print('Initialisation of spark session passed')
+        print('Initialisation of spark session Completed')
         input_df = load_file(file_name,spark)
-        print('Read a csv file is passed')
+        print('Read a csv file is Completed')
         transform_data = (input_df.select(tokenize(input_df.first_name).alias('first_name'),\
                                           tokenize(input_df.last_name).alias('last_name'),\
                                           tokenize(input_df.address).alias('address'),\
                                           input_df.date_of_birth))
-        print('Transformation is  passed')
+        print('Transformation is Completed')
         write_file(transform_data,folder_name)
-        print('Writing a dataframe into a file is passed')
+        print('Writing a dataframe into a file is Completed')
         """
         #To detokenise the tokenised value to check - uncomment this block to test the tokenisation and 
         #detokenisation
