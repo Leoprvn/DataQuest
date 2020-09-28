@@ -3,6 +3,8 @@
 The Dockerised solution with Python scripts to convert flat file to delimiter file & Anonymize data as per the requirment
 
 Docker File to create the docker image with python and pyspark setup to run the scripts with the Linux version 'alpine:latest' (Light weight Docker image of linux OS).
+Execute to get into the docker: docker run -it praveenko/pyspark_data_quest:latest
+
 
 Problem 1: Parse fixed width file
 Generate a fixed width file using the provided spec (offset provided in the spec file represent the length of each field).
