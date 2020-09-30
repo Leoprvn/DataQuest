@@ -71,7 +71,7 @@ def create_csv_file(file_name, number_of_lines):
                                      ,column_name[1]:random_first_last_name_dob('l')
                                      ,column_name[2]:random_first_last_name_dob('a')
                                      , column_name[3]:random_first_last_name_dob('n')})
-            total_lines += line_number
+            total_lines = line_number
     print("File {} has been created Successfully with {} lines ".format(file_name,total_lines))
 
 
