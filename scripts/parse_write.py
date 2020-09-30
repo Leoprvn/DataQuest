@@ -50,7 +50,6 @@ GBrXguIwVQAGQgfqsEIhwgTI2ZUM4OiR0p7AKuskQLmEdRLwTTMmin0tJqVpDMcBPsODKvB61Kd5r1Vp
             for i in range(len(offsetu) - 1):
                 string += "," + (line[offsetu[i]:offsetu[i + 1]])
             lines.append(string)
-            print(lines)
         print("File {} has been parsed with the offset {}".format(file_name,offset))
         return lines
     except FileNotFoundError:
