@@ -1,24 +1,25 @@
+"""
+This script to test the create_flat_file
+"""
 import os
-import random
-import string
-import sys
-
-import create_flat_file
 import pytest
+import create_flat_file
 
 
-@pytest.fixture
-def input_value():
+@pytest.fixture(name='input_value')
+def parameter():
     """
     Initalise the input parameters for other test function
-    :return: list of the parametes flat_file_input,delimited_output_file,number_of_records,tot_num_char
+    :return: list of the parametes flat_file_input
+    ,delimited_output_file,number_of_records,tot_num_char
     """
     flat_file_input = os.path.join(os.path.abspath('.'), 'input.txt')
     delimited_output_file = os.path.join(os.path.abspath('.'), 'output.dat')
     number_of_records = 100
     offset = [int(i) for i in str('5,12,3,2,13,7,10,13,20,13').split(',')]
     tot_num_char = sum(offset)
-    return [flat_file_input, delimited_output_file, number_of_records, tot_num_char, offset]
+    input_value = [flat_file_input, delimited_output_file, number_of_records, tot_num_char, offset]
+    return input_value
 
 
 # @pytest.mark.rand_char
@@ -48,4 +49,5 @@ def test_create_flat_file(input_value):
     cnt = 0
     for count in open(file_name):
         cnt += 1
+        assert len(count)-1 == tot_num_char, "total characters not generator as expected"
     assert cnt == number_of_lines
