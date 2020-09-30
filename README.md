@@ -43,7 +43,7 @@ For all the module, testing scenario has been addressed with pytest python packa
 **Command: pytest -v
 
 ###### Test Summary:
-======================================================== test session starts ===========================================================  
+===================test session starts====================
 platform win32 -- Python 3.7.3, pytest-6.1.0, py-1.9.0, pluggy-0.13.1 -- c:\users\bravo\pycharmprojects\dataquest\venv\scripts\python.exe  
 cachedir: .pytest_cache  
 rootdir: C:\Users\bravo\PycharmProjects\DataQuest\venv\test  
@@ -58,9 +58,10 @@ test_tokeniser.py::test_spark_init                                 PASSED       
 test_tokeniser.py::test_tokeniser                                  PASSED                [ 80%]  
 test_tokeniser.py::test_load_file                                  PASSED                [ 90%]  
 test_tokeniser.py::test_write_file                                 PASSED                [100%]  
-==================================================== warnings summary ======================================================================  
+==================warnings summary=================  
 test_tokeniser.py::test_spark_init
-c:\users\bravo\pycharmprojects\dataquest\venv\lib\site-packages\pyspark\sql\context.py:77: DeprecationWarning: Deprecated in 3.0.0. Use SparkSession.builder.getOrCreate() insteadDeprecationWarning)
+c:\users\bravo\pycharmprojects\dataquest\venv\lib\site-packages\pyspark\sql\context.py:77: 
+DeprecationWarning: Deprecated in 3.0.0. Use SparkSession.builder.getOrCreate() insteadDeprecationWarning)  
 
 -- Docs: https://docs.pytest.org/en/stable/warnings.html
-================================================= 10 passed, 1 warning in 8.70s ============================================================  
+================ 10 passed, 1 warning in 8.70s ========================
