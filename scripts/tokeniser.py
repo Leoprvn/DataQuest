@@ -1,5 +1,5 @@
 """
-This module is to test the tokeniser module
+This module is the tokeniser data
 """
 import sys
 from pyspark.sql import SparkSession
