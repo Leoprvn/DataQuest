@@ -1,19 +1,21 @@
+"""
+This module is to test the tokeniser functionality
+"""
+import os
+import base64
 import pytest
 import tokeniser
-import os
-from pyspark.sql import SparkSession
-from pyspark.sql.functions import base64,unbase64
-import base64
 
 
-@pytest.fixture
-def input_value():
+@pytest.fixture(name='input_value')
+def parameter():
     """
     Initialise the parameters to use by other function
     :return: list of parameter to the other functions
     """
     appname_val = 'test_tokeniser.py'
-    first_name = ('Andrew', 'John', 'Clifford', 'Jinna', 'Andy', 'Joe', 'Joesph', 'Thomas', 'Praveen', 'Edward')
+    first_name = ('Andrew', 'John', 'Clifford', 'Jinna', 'Andy', 'Joe'
+                  , 'Joesph', 'Thomas', 'Praveen', 'Edward')
     input_file = os.path.join(os.path.abspath('.'), 'create_csv.csv')
     output_folder = os.path.join(os.path.abspath('.'),'tokenised_output')
     number_of_lines = 100
@@ -27,8 +29,7 @@ def test_spark_init(input_value):
     :return:
     """
     spark = tokeniser.spark_init(input_value[0])
-    a = 1
-    assert a == 1
+    assert isinstance(spark,object),'spark initialisation failed'
 
 
 def test_tokeniser(input_value):
@@ -49,7 +50,6 @@ def test_load_file(input_value):
     """
     app_name = input_value[0]
     file_name = input_value[2]
-    number_of_lines = input_value[4]
     spark = tokeniser.spark_init(app_name)
     data = tokeniser.load_file(file_name,spark)
     assert data.count() ==  100,"Load didn't work properly"
@@ -70,4 +70,3 @@ def test_write_file(input_value):
     data_after_writing = spark.read.parquet(folder_name)
     data_count = data_after_writing.count()
     assert data_count == number_of_lines, 'write failed'
-
