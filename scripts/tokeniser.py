@@ -65,7 +65,6 @@ def write_file(dataframe,folder_name):
     :return: return nothing
     """
     dataframe.write.format('parquet').mode('overwrite').save(folder_name)
-    print('writing a dataframe into file is completed')
 
 
 def main():
