@@ -43,27 +43,24 @@ For all the module, testing scenario has been addressed with pytest python packa
 **Command: pytest -v
 
 ###### Test Summary:
-======================================================== test session starts ===========================================================
-platform win32 -- Python 3.7.3, pytest-6.1.0, py-1.9.0, pluggy-0.13.1 -- c:\users\bravo\pycharmprojects\dataquest\venv\scripts\python.exe
-cachedir: .pytest_cache
-rootdir: C:\Users\bravo\PycharmProjects\DataQuest\venv\test
-collected 10 items                                                                                                                                                            
-test_create_csv.py::test_random_first_last_name_dob                PASSED                [ 10%]
-test_create_csv.py::test_create_csv_file                           PASSED                [ 20%]
-test_create_flat_file.py::test_get_random_alphanumeric_character   PASSED                [ 30%]
-test_create_flat_file.py::test_create_flat_file                    PASSED                [ 40%]
-test_parse_write.py::test_parse_file                               PASSED                [ 50%]
-test_parse_write.py::test_write_file                               PASSED                [ 60%]
-test_tokeniser.py::test_spark_init                                 PASSED                [ 70%]
-test_tokeniser.py::test_tokeniser                                  PASSED                [ 80%]
-test_tokeniser.py::test_load_file                                  PASSED                [ 90%]
-test_tokeniser.py::test_write_file                                 PASSED                [100%]
-
-==================================================== warnings summary ======================================================================
+======================================================== test session starts ===========================================================  
+platform win32 -- Python 3.7.3, pytest-6.1.0, py-1.9.0, pluggy-0.13.1 -- c:\users\bravo\pycharmprojects\dataquest\venv\scripts\python.exe  
+cachedir: .pytest_cache  
+rootdir: C:\Users\bravo\PycharmProjects\DataQuest\venv\test  
+collected 10 items                                                                                                                                                             
+test_create_csv.py::test_random_first_last_name_dob                PASSED                [ 10%]  
+test_create_csv.py::test_create_csv_file                           PASSED                [ 20%]  
+test_create_flat_file.py::test_get_random_alphanumeric_character   PASSED                [ 30%]  
+test_create_flat_file.py::test_create_flat_file                    PASSED                [ 40%]  
+test_parse_write.py::test_parse_file                               PASSED                [ 50%]  
+test_parse_write.py::test_write_file                               PASSED                [ 60%]  
+test_tokeniser.py::test_spark_init                                 PASSED                [ 70%]  
+test_tokeniser.py::test_tokeniser                                  PASSED                [ 80%]  
+test_tokeniser.py::test_load_file                                  PASSED                [ 90%]  
+test_tokeniser.py::test_write_file                                 PASSED                [100%]  
+==================================================== warnings summary ======================================================================  
 test_tokeniser.py::test_spark_init
-  c:\users\bravo\pycharmprojects\dataquest\venv\lib\site-packages\pyspark\sql\context.py:77: 
-                                   DeprecationWarning: Deprecated in 3.0.0. Use SparkSession.builder.getOrCreate() insteadDeprecationWarning)
+c:\users\bravo\pycharmprojects\dataquest\venv\lib\site-packages\pyspark\sql\context.py:77: DeprecationWarning: Deprecated in 3.0.0. Use SparkSession.builder.getOrCreate() insteadDeprecationWarning)
 
 -- Docs: https://docs.pytest.org/en/stable/warnings.html
-================================================= 10 passed, 1 warning in 8.70s ============================================================
-
+================================================= 10 passed, 1 warning in 8.70s ============================================================  
