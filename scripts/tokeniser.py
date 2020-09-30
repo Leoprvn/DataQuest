@@ -1,6 +1,9 @@
-from pyspark.sql import SparkSession
-from pyspark.sql.functions import base64,unbase64
+"""
+This module is to test the tokeniser module
+"""
 import sys
+from pyspark.sql import SparkSession
+import pyspark.sql.functions as fn
 
 
 def arg_validate():
@@ -21,12 +24,9 @@ def spark_init(appname_val):
     :param: appname_val: name of the application
     :return: returns the spark session
     """
-    try:
-        spark = SparkSession.builder.appName(appname_val).getOrCreate()
-        spark.sparkContext.setLogLevel("WARN")
-        return spark
-    except:
-        print("Initialisation of spark session failed")
+    spark = SparkSession.builder.appName(appname_val).getOrCreate()
+    spark.sparkContext.setLogLevel("ERROR")
+    return spark
 
 
 def tokenize(column):
@@ -35,22 +35,16 @@ def tokenize(column):
     :param column: pass column to be tokensize
     :return: tokenized column
     """
-    try:
-        return base64(column)
-    except:
-        print("Tokenisation function failed")
+    return fn.base64(column)
 
 
 def detokenize(column):
     """
     This function to detokenise using unbase64
     :param column: pass column to detokenize
-    :return:
+    :return: untokenised value
     """
-    try:
-        return(unbase64(column).cast("string"))
-    except:
-        print("Detokenisation function failed")
+    return fn.unbase64(column).cast("string")
 
 
 def load_file(file_name,spark):
@@ -59,11 +53,8 @@ def load_file(file_name,spark):
     :param file_name: File to read
     :return: dataframe
     """
-    try:
-        input_csv=spark.read.csv(file_name,header=True)
-        return input_csv
-    except:
-        print("Reading a file failed")
+    input_csv=spark.read.csv(file_name,header=True)
+    return input_csv
 
 
 def write_file(dataframe,folder_name):
@@ -73,10 +64,8 @@ def write_file(dataframe,folder_name):
     :param file_name: provide the absolute path
     :return: return nothing
     """
-    try:
-        dataframe.write.format('parquet').mode('overwrite').save(folder_name)
-    except:
-        print('writing a dataframe into file is failed')
+    dataframe.write.format('parquet').mode('overwrite').save(folder_name)
+    print('writing a dataframe into file is completed')
 
 
 def main():
@@ -90,30 +79,19 @@ def main():
     folder_name = sys.argv[2]
     try:
         spark = spark_init(appname_val)
-        print('Initialisation of spark session Completed')
+        print('Initialisation of spark session completed')
         input_df = load_file(file_name,spark)
-        print('Read a csv file is Completed')
+        print('Read a csv file is completed')
         transform_data = (input_df.select(tokenize(input_df.first_name).alias('first_name'),\
                                           tokenize(input_df.last_name).alias('last_name'),\
                                           tokenize(input_df.address).alias('address'),\
                                           input_df.date_of_birth))
-        print('Transformation is Completed')
+        print('Transformation is completed')
         write_file(transform_data,folder_name)
-        print('Writing a dataframe into a file is Completed')
-        """
-        #To detokenise the tokenised value to check - uncomment this block to test the tokenisation and 
-        #detokenisation
-        df = spark.read.parquet(folder_name)
-        df.show(10)
-        print('reading the untokenised value from patquet')
-        df.select(detokenize(df.first_name).alias('first_name'),detokenize(df.last_name).alias('last_name'),\
-        detokenize(df.address).alias('address'),df.date_of_birth.alias('date_of_birth')).show()
-        print("Testing successfull")
-        """
-    except Exception:
+        print('Writing a dataframe into a file is completed')
+    except RuntimeError:
         print('Main function is failed')
 
 
 if __name__ == "__main__":
     main()
-
