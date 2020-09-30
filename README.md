@@ -24,14 +24,14 @@ Docker file is to create the docker image with python3.x and pyspark 3.0.1 setup
 
 #### All Commands:
 ###### Docker Commands:
-***docker pull praveenko/pyspark_data_quest  
- docker run -it praveenko/pyspark_data_quest
+ **docker pull praveenko/pyspark_data_quest**    
+ **docker run -it praveenko/pyspark_data_quest**  
 ###### Commands for problem 1:
- python create_flat_file.py "../io/flat_file.txt" 100 "5,12,3,2,13,7,10,13,20,13"  
- python parse_write.py "../io/flat_file.txt" "../io/delimited_file.dat" "5,12,3,2,13,7,10,13,20,13"  
+ **python create_flat_file.py "../io/flat_file.txt" 100 "5,12,3,2,13,7,10,13,20,13"**    
+ **python parse_write.py "../io/flat_file.txt" "../io/delimited_file.dat" "5,12,3,2,13,7,10,13,20,13"**    
 ###### Commands for Problem 2:
- python create_csv.py "../io/csv_file.csv" 100  
- python tokeniser.py "../io/csv_file.csv" "../io/tokenised_data"***  
+ **python create_csv.py "../io/csv_file.csv" 100**    
+ **python tokeniser.py "../io/csv_file.csv" "../io/tokenised_data"**  
 
 Run the spark submit command from the spark cluster. NB: Docker doesn't have spark cluster ,but can run as local from docker
 ***spark-submit  --master local --deploy-mode client tokeniser.py "../io/csv_file.csv" "../io/tokenised_data"***
